@@ -293,36 +293,199 @@ graph TD
 2. Try rebuilding container: `Ctrl+Shift+P` → "Rebuild Container"
 3. Check .devcontainer/devcontainer.json for errors
 
-## Git Integration
+## Git and GitHub Integration
 
-1. Initialize Git in your project:
-   ```bash
-   git init
-   ```
+### Understanding Git and GitHub for Beginners
 
-2. Configure Git (replace with your details):
+#### What is Git?
+Git is a version control system that runs on your computer. Think of it as a sophisticated "Save As" system that:
+- Tracks every change you make to your files
+- Lets you review and undo changes
+- Works completely offline
+- Helps manage different versions of your code
+
+#### What is GitHub?
+GitHub is a website service that:
+- Hosts Git repositories online
+- Makes it easy to share your code
+- Allows multiple people to work on the same code
+- Provides tools for code review and project management
+
+The relationship: Git is the tool, GitHub is the service that hosts Git projects online.
+
+### Step-by-Step Setup Guide
+
+#### 1. Initial Git Setup (One-time setup)
+1. Open terminal in VS Code (Ctrl + `)
+2. Configure your identity:
    ```bash
+   # Set your name
    git config --global user.name "Your Name"
+   
+   # Set your email (use the same email as your GitHub account)
    git config --global user.email "your.email@example.com"
    ```
 
-3. Create .gitignore file:
+#### 2. GitHub Account Setup (One-time setup)
+1. Go to https://github.com
+   ![GitHub New Repo Button](images/github-1-new-repo.png)
+2. Click "Sign up"
+3. Follow the registration process
+4. Verify your email address
+
+#### 3. Setting Up a New Project with Git
+1. Create and enter your project folder
+2. Initialize Git in your project:
    ```bash
-   # Common files to ignore
-   .env
-   node_modules/
-   __pycache__/
-   .vscode/
+   # This creates a new Git repository
+   git init
+   
+   # Verify it worked - you should see a hidden .git folder
+   dir /a   # on Windows
+   ls -la   # on Mac/Linux
    ```
 
-4. Basic Git workflow:
+3. Create a .gitignore file (tells Git which files to ignore):
    ```bash
+   # Common files to ignore
+   .env                # Environment variables
+   node_modules/       # Node.js dependencies
+   __pycache__/       # Python cache
+   .vscode/           # VS Code settings
+   *.log              # Log files
+   .DS_Store          # Mac system files
+   ```
+
+#### 4. Creating Your First Local Save (Commit)
+1. Stage your files (prepare them for saving):
+   ```bash
+   # See which files Git detected
+   git status
+   
+   # Add all files
    git add .
-   git commit -m "Initial commit"
+   
+   # Or add specific files
+   git add filename.txt
+   
+   # Check status again to verify
+   git status
+   ```
+
+2. Save your changes (commit):
+   ```bash
+   git commit -m "Initial commit: Project setup"
+   ```
+
+#### 5. Connecting to GitHub
+1. Create a new repository on GitHub:
+   - Go to https://github.com
+   - Click the "+" in the top-right corner
+   - Select "New repository"
+   ![GitHub Create Repo](images/github-2-create-repo.png)
+   *Select "New repository" from the menu*
+
+   - Fill in your repository details:
+     * Name your repository
+     * Add an optional description
+     * Choose public or private
+     * DO NOT initialize with README (we'll upload our existing code)
+   ![GitHub Repo Settings](images/github-3-repo-settings.png)
+   *Fill in the repository details. Leave "Add a README file" unchecked if you have existing code*
+
+   - Click "Create repository"
+   - You'll see the quick setup page with commands to use:
+   ![GitHub Quick Setup](images/github-4-quick-setup.png)
+   *The quick setup page shows the commands you'll need to run*
+
+2. Connect your local Git to GitHub:
+   ```bash
+   # GitHub will show these commands after repository creation
+   
+   # Set the main branch name
    git branch -M main
-   git remote add origin <your-repository-url>
+   
+   # Link your local repo to GitHub (GitHub will show the exact URL)
+   git remote add origin https://github.com/yourusername/your-repo-name.git
+   
+   # Verify the remote connection
+   git remote -v
+   ```
+   ![GitHub Status Now](images/github-4-1-setup.png)
+   *You should see something like this after running these commands.*
+
+#### 6. Pushing Changes to GitHub
+1. Push your code to GitHub for the first time:
+   ```bash
+   # The -u flag remembers your preferences for future pushes
    git push -u origin main
    ```
+    ![GitHub Push](images/github-6-push.png)
+    *You should see something like this after git push.*
+
+2. Verify on `github.com`
+  ![GitHub Page](images/github-7-page.png)
+  *You should see your github repository having same files you pushed.*
+
+2. Future changes workflow:
+   ```bash
+   # 1. Check what's changed
+   git status
+   
+   # 2. Stage changes
+   git add .
+   
+   # 3. Save changes locally
+   git commit -m "Describe what you changed"
+   
+   # 4. Upload to GitHub
+   git push
+   ```
+
+### Common Git Commands Reference
+```bash
+# Check repository status
+git status
+
+# See change history
+git log
+
+# Create and switch to a new branch
+git checkout -b branch-name
+
+# Switch branches
+git checkout branch-name
+
+# Download updates from GitHub
+git pull
+
+# See what changed in a file
+git diff filename
+```
+
+### Visualizing Git Workflow
+```mermaid
+graph TD
+    A[Your Working Files] -->|git add| B[Staging Area]
+    B -->|git commit| C[Local Repository]
+    C -->|git push| D[GitHub Repository]
+    D -->|git pull| C
+    style B fill:#90EE90
+    style C fill:#87CEEB
+    style D fill:#FFB6C1
+```
+
+### Tips for Beginners
+1. Use `git status` frequently to see what's happening
+2. Make small, focused commits with clear messages
+3. Pull changes before starting new work
+4. Always check which branch you're on
+5. Create a new branch for new features/changes
+
+### Need Help?
+- Run `git --help` for command list
+- Run `git command --help` for specific command help
+- Visit [GitHub Guides](https://guides.github.com) for tutorials
 
 ## Best Practices
 
