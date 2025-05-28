@@ -71,12 +71,13 @@ graph TD
 *The VS Code welcome screen with quick links and getting started guides.*
 
 4. The key parts of VS Code interface:
-
-1. Activity Bar (left)
-2. Side Bar (file explorer, search, etc.)
-3. Editor Area
-4. Panel (terminal, output, etc.)
-5. Status Bar (bottom)
+```
+  1. Activity Bar (left)
+  2. Side Bar (file explorer, search, etc.)
+  3. Editor Area
+  4. Panel (terminal, output, etc.)
+  5. Status Bar (bottom)
+```
 
 5. Opening the Command Palette (Ctrl+Shift+P):
 
