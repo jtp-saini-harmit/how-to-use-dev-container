@@ -105,7 +105,7 @@ graph TD
 4. Verify installation in terminal:
 
 ![Open Terminal](images/docker-4-terminal.png)
-*Running `docker --version` in the terminal to verify installation.*
+*Open a new VS Code terminal.*
 
 5. Verify installation in terminal:
 
@@ -496,7 +496,7 @@ graph TD
 5. **Test container builds regularly** to ensure reproducibility
 6. **Share your dev container configuration** with team members
 
-### folder Structure Example:
+### Folder Structure Example:
 ```
 your-project/
 ├── .devcontainer/
